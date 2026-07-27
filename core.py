@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 
 INVIDIOUS_BASE = "https://raw.githubusercontent.com/kuru-bana/yt-data/main/invidious"
 VIDEO_BACK_URL = "https://raw.githubusercontent.com/kuru-bana/yt-data/refs/heads/main/api/video-back.json"
-INNERTUBE_BASE = "https://choco-youtube-js.onrender.com"
+INNERTUBE_BASE = "http://localhost:5000"
 CACHE_TTL = 5 * 60
 
 KEEPALIVE_TARGETS = [

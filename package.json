@@ -1,0 +1,15 @@
+{
+  "name": "chocotube-plus",
+  "version": "1.27.0",
+  "description": "YouTube privacy-friendly frontend",
+  "main": "main.py",
+  "scripts": {
+    "start": "INNERTUBE_PORT=5000 node innertube_index.js & python3 -m uvicorn main:app --host 0.0.0.0 --port 3000",
+    "install:python": "pip install -r requirements.txt",
+    "postinstall": "bash setup.sh"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "youtubei.js": "^12.1.0"
+  }
+}
