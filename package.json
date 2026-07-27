@@ -5,12 +5,14 @@
   "type": "module",
   "main": "main.py",
   "scripts": {
-    "start": "INNERTUBE_PORT=5000 node innertube_index.mjs & python3 -m uvicorn main:app --host 0.0.0.0 --port 3000",
+    "start": "INNERTUBE_PORT=5000 node innertube_index.mjs & node server.mjs",
     "install:python": "python3 -m pip install --user -r requirements.txt || pip3 install --user -r requirements.txt || true",
-    "postinstall": "bash setup.sh"
+    "postinstall": "npm install axios nunjucks youtubei.js express"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "youtubei.js": "^12.1.0"
+    "youtubei.js": "^12.1.0",
+    "axios": "^1.6.0",
+    "nunjucks": "^3.2.4"
   }
 }

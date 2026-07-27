@@ -920,6 +920,10 @@ app.get('/resolve', async (req, res) => {
   catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+app.get('/version', (req, res) => {
+  res.json({ ver: '1.27-innertube' });
+});
+
 initInnertube().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`YouTube Innertube API サーバー起動: http://0.0.0.0:${PORT}`);

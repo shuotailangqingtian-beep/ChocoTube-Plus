@@ -8,13 +8,14 @@
 2. `postinstall` スクリプトにより、Python の依存関係 (`requirements.txt`) と Node.js の依存関係 (`youtubei.js`, `express`) がインストールされます。
 3. インストール完了後、`npm start` を実行してください。
 4. 以下の2つのサーバーが起動します：
-   - **FastAPI (Python)**: ポート 3000（メインのフロントエンド）
+   - **Main Server (Node.js/Express)**: ポート 3000（メインのフロントエンド。PythonのFastAPIから移植されました）
    - **Innertube API (Node.js)**: ポート 5000（内部データ取得用）
 
 ## 修正内容
 
 - `package.json`: StackBlitz 用の起動スクリプトと依存関係を追加。
-- `core.py`: `INNERTUBE_BASE` を外部サーバーからローカルホスト (`http://localhost:5000`) に変更し、ローカルの Node.js サーバーを使用するように調整。
+- `server.mjs`: PythonのFastAPIサーバーをNode.js (Express) に移植し、StackBlitz環境でのライブラリ不足問題を解消しました。
+- `innertube_index.mjs`: ポート番号を環境変数から取得できるようにし、Fetch問題を回避するための修正を行いました。
 - `innertube_index.js`: ポート番号を環境変数から取得できるように柔軟性を持たせました。
 - `.stackblitzrc`: StackBlitz の動作設定を追加。
 - `setup.sh`: 環境構築用のヘルパースクリプト。
