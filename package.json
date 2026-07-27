@@ -5,8 +5,8 @@
   "type": "module",
   "main": "main.py",
   "scripts": {
-    "start": "INNERTUBE_PORT=5000 node innertube_index.js & python3 -m uvicorn main:app --host 0.0.0.0 --port 3000",
-    "install:python": "python3 -m pip install -r requirements.txt",
+    "start": "INNERTUBE_PORT=5000 node innertube_index.mjs & (python3 -m uvicorn main:app --host 0.0.0.0 --port 3000 || uvicorn main:app --host 0.0.0.0 --port 3000 || python3 main.py)",
+    "install:python": "python3 -m pip install --user -r requirements.txt || pip3 install --user -r requirements.txt || true",
     "postinstall": "bash setup.sh"
   },
   "dependencies": {

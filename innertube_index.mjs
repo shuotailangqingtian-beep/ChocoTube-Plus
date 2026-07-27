@@ -20,15 +20,8 @@ async function initInnertube() {
     gl: 'JP',
     hl: 'ja',
     fetch: async (input, init) => {
-      try {
-        return await fetch(input, init);
-      } catch (err) {
-        if (err.message.includes('socket') || err.message.includes('fetch failed')) {
-          console.warn('Network error detected, retrying with global fetch...');
-          return await globalThis.fetch(input, init);
-        }
-        throw err;
-      }
+      // StackBlitz WebContainer environment fix: use global fetch to bypass undici issues
+      return await globalThis.fetch(input, init);
     }
   });
   console.log('Innertube initialized');
