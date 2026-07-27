@@ -1,3 +1,6 @@
 #!/bin/bash
-python3 -m pip install --user -r requirements.txt || pip3 install --user -r requirements.txt || pip install --user -r requirements.txt || true
+# Install Node.js dependencies
 npm install youtubei.js express
+
+# Try to install Python dependencies if possible, but don't fail if pip is missing
+python3 -m pip install -r requirements.txt --user || true
