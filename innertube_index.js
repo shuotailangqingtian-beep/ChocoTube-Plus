@@ -19,6 +19,17 @@ async function initInnertube() {
     generate_session_locally: true,
     gl: 'JP',
     hl: 'ja',
+    fetch: async (input, init) => {
+      try {
+        return await fetch(input, init);
+      } catch (err) {
+        if (err.message.includes('socket') || err.message.includes('fetch failed')) {
+          console.warn('Network error detected, retrying with global fetch...');
+          return await globalThis.fetch(input, init);
+        }
+        throw err;
+      }
+    }
   });
   console.log('Innertube initialized');
 }
